@@ -55,6 +55,11 @@
       <summary>Animation time</summary>
       <description>Sets the time duration of the autohide effect.</description>
     </key>
+    <key type="d" name="hover-distance">
+      <default>1.0</default>
+      <summary>Hover distance</summary>
+      <description>Sets the distance from the screen edge where the mouse hover is active.</description>
+    </key>
     <key type="d" name="show-delay">
       <default>0.25</default>
       <summary>Show delay</summary>

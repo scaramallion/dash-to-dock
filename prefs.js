@@ -351,6 +351,10 @@ var Settings = class DashToDock_Settings {
                             this._builder.get_object('pressure_threshold_spinbutton'),
                             'value',
                             Gio.SettingsBindFlags.DEFAULT);
+        this._settings.bind('hover-distance',
+                            this._builder.get_object('hover_distance_spinbutton'),
+                            'value',
+                            Gio.SettingsBindFlags.DEFAULT);
 
         //this._builder.get_object('animation_duration_spinbutton').set_value(this._settings.get_double('animation-time'));
 
@@ -415,7 +419,7 @@ var Settings = class DashToDock_Settings {
                 if (id == 1) {
                     // restore default settings for the relevant keys
                     let keys = ['intellihide', 'autohide', 'intellihide-mode', 'autohide-in-fullscreen', 'require-pressure-to-show',
-                                'animation-time', 'show-delay', 'hide-delay', 'pressure-threshold'];
+                                'animation-time', 'show-delay', 'hide-delay', 'pressure-threshold', 'hover-distance'];
                     keys.forEach(function(val) {
                         this._settings.set_value(val, this._settings.get_default_value(val));
                     }, this);

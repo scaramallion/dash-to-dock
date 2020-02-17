@@ -754,14 +754,15 @@ var DockedDash = GObject.registerClass({
         let shouldDwell;
         // Check for the correct screen edge, extending the sensitive area to the whole workarea,
         // minus 1 px to avoid conflicting with other active corners.
+        hoverDistance = this._settings.get_double('hover-distance');
         if (this._position == St.Side.LEFT)
-            shouldDwell = (x == this._monitor.x) && (y > workArea.y) && (y < workArea.y + workArea.height);
+            shouldDwell = (x <= this._monitor.x + hoverDistance - 1) && (y > workArea.y) && (y < workArea.y + workArea.height);
         else if (this._position == St.Side.RIGHT)
-            shouldDwell = (x == this._monitor.x + this._monitor.width - 1) && (y > workArea.y) && (y < workArea.y + workArea.height);
+            shouldDwell = (x >= this._monitor.x + this._monitor.width - hoverDistance) && (y > workArea.y) && (y < workArea.y + workArea.height);
         else if (this._position == St.Side.TOP)
-            shouldDwell = (y == this._monitor.y) && (x > workArea.x) && (x < workArea.x + workArea.width);
+            shouldDwell = (y <= this._monitor.y + hoverDistance - 1) && (x > workArea.x) && (x < workArea.x + workArea.width);
         else if (this._position == St.Side.BOTTOM)
-            shouldDwell = (y == this._monitor.y + this._monitor.height - 1) && (x > workArea.x) && (x < workArea.x + workArea.width);
+            shouldDwell = (y >= this._monitor.y + this._monitor.height - hoverDistance) && (x > workArea.x) && (x < workArea.x + workArea.width);
 
         if (shouldDwell) {
             // We only set up dwell timeout when the user is not hovering over the dock
