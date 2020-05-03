@@ -765,7 +765,7 @@ var DockedDash = GObject.registerClass({
         let shouldDwell;
         // Check for the correct screen edge, extending the sensitive area to the whole workarea,
         // minus 1 px to avoid conflicting with other active corners.
-        hoverDistance = this._settings.get_double('hover-distance');
+        let hoverDistance = DockManager.settings.get_double('hover-distance');
         if (this._position == St.Side.LEFT)
             shouldDwell = (x <= this._monitor.x + hoverDistance - 1) && (y > workArea.y) && (y < workArea.y + workArea.height);
         else if (this._position == St.Side.RIGHT)
